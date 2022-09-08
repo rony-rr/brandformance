@@ -1,0 +1,19 @@
+{
+	"presets": ["next/babel", "@babel/preset-react", "@babel/preset-env"],
+	"plugins": [
+		[
+			"import",
+			{
+				"libraryName": "antd",
+				"libraryDirectory": "lib",
+				"style": "sass"
+			}
+		],
+		[
+			"styled-components",
+			{
+				"ssr": true
+			}
+		]
+	]
+}

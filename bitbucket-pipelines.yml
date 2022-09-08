@@ -1,0 +1,25 @@
+# bitbucket-pipelines.yml
+
+# Place this at the root of your repository
+
+# Change this to your project's node version
+image: node:14.15.1
+
+clone:
+  depth: full
+
+# Deploy the master branch to our app.
+# Pulls the Heroku API Key and the name of the app from our
+# configured environment variables.
+
+# Staging
+herokuAppDeployment: &herokuAppDeployment
+  name: Deploy Heroku App Production
+  deployment: Production
+  script:
+    - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master -f
+
+pipelines:
+  branches:
+    master:
+      - step: *herokuAppDeployment
